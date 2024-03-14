@@ -263,7 +263,7 @@ createApp({
             }
         },
 
-        //
+        // Rimuove il messaggio relativo all'index passato
         removeMessage(userIndex){
             //Verifico se si triggera bene
             console.log("Cancella!");

@@ -74,3 +74,4 @@ permette di cancellare il messaggio selezionato
 - Aggiungo al menù a tendina un icona
 - Al click sull'icona partirà una funzione removeMessage() a cui passerò l'indice
 - La funzione removeMessage() dovrà cancellare il messaggio in questione con splice (grazie all'indice)
+- Collego anche data e ora dell'ultimo messaggio nella userBar

@@ -64,7 +64,8 @@
                             <i class="col-3 fa-solid fa-magnifying-glass"></i>
                             <!-- Assegno con v-on il valore in input alla stringa vuota searchedValue in js-->
                             <!--Utilizzo keyup enter per far si che venga monitorata e aggiornata la lista di contatti da stampare con searchUser()-->
-                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue" @keyup.enter="searchUser()">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue"
+                                @keyup.enter="searchUser()">
                         </div>
 
                         <!--4th part-->
@@ -78,14 +79,17 @@
                                     <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
+                                    <div class="card-text d-flex justufy-between">
+                                        <div class="d-flex col-8">
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
-                                            <h5>{{user.name}}</h5>
-                                            <!--Utilizzando Vue visualizzo il nome del mio utente-->
-                                            <p class="hour">{{user.date}}</p>
+                                            <div class="left-user">
+                                                <h5>{{user.name}}</h5>
+                                                <!--Visualizzo l'ultimo messaggio inserito nell'array dei messaggi-->
+                                                <div>{{user.messages[(user.messages.length -1)].message}}</div>
+                                            </div>
                                         </div>
-                                        <p></p>
+                                        <!--Utilizzando Vue visualizzola data dell'ultimo messaggio del mio utente del mio utente-->
+                                        <p class="hour col-4">{{user.messages[(user.messages.length -1)].date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +140,8 @@
                                     <i class="fa-solid fa-chevron-down">
                                         <ul class="hidden-menu">
                                             <!--Al click sull'icona chiamo la funzione removeMessage() a cui passo l'indice dell'array (dato che sto ciclando)-->
-                                            <li class="menu-row"><i class="fa-solid fa-toilet" @click="removeMessage(index)"></i></li>
+                                            <li class="menu-row"><i class="fa-solid fa-toilet"
+                                                    @click="removeMessage(index)"></i></li>
                                         </ul>
                                     </i>
                                 </div>

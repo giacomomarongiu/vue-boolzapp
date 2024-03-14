@@ -78,6 +78,9 @@ body {
 
 
 /*Utilities*/
+.justufy-between{
+    justify-content: space-between;
+}
 .d-flex {
     display: flex;
 }
@@ -88,7 +91,7 @@ body {
 }
 
 .col-3 {
-    width: calc((100%/12)*3);
+    min-width: calc((100%/12)*3);
 }
 
 .col-4 {
@@ -257,6 +260,10 @@ main {
 
 .name-hour {
     justify-content: space-between;
+}
+
+.left-user{
+    max-width: 100%;
 }
 
 
