@@ -5,6 +5,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            // Variabile numerica che mi servirà come indice di appoggio
+            userActive: 0,
             // array di oggetti che contengono due stringhe (nome e percorso immagine), un booleano e un array di oggetti
             contacts: [
                 {

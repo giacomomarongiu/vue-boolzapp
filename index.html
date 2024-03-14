@@ -66,10 +66,13 @@
                         </div>
 
                         <!--4th part-->
+                        <!--Faccio un ciclo con v-for in modo da vedere non solo il primo utente ma tutti in fila-->
                         <div id="users-card-container" v-for="(user, index) in contacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
-                            <div class="card-user col-12 d-flex">
+                            <!-- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente-->
+                            <div class="card-user col-12 d-flex" @click="userActive=index">
                                 <div class="col-3 col-md-12">
+                                    <!--Inserisco dinamicamente l'avatr con VUE-->
                                     <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
@@ -85,8 +88,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
                     <!--/left-side of the chat-->
@@ -100,14 +101,15 @@
                         <div id="up-right" class="d-flex">
                             <div class="col-2 text-center">
                                 <a class="lets-show" href="">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_1.jpg">
+                                    <img alt="" class="img-100" :src="contacts[userActive].avatar">
                                     <div class="show-big">
-                                        <img class="big-profile" src="./assets/img/avatar_1.jpg" alt="">
+                                        <img class="big-profile" :src="contacts[userActive].avatar" alt="">
                                     </div>
                                 </a>
                             </div>
                             <div class="card-text col-9-sm col-8">
-                                <h5>Michele</h5>
+                                <!--Utilizzando Vue visualizzo il nome del mio utente-->
+                                <h5>{{contacts[userActive].name}}</h5>
                                 <p>Ultimo accesso oggi alle 16:26</p>
                             </div>
                             <div class="col-2 col-md-2 d-flex card-bye-sm">
@@ -125,7 +127,7 @@
                             <!-- La colonna di destra cambia da right a received
                             Quella di sinistra da left a sent-->
                             <!--Utilizzando la funzione sendOrReceiced assegno la classe coretta al messaggio del mio oggetto-->
-                            <div class="square col-7 col-9-sm" v-for="(msg, index) in contacts[0].messages"
+                            <div class="square col-7 col-9-sm" v-for="(msg, index) in contacts[userActive].messages"
                                 :class="sendOrReceived(msg.status)">
                                 {{msg.message}}
                                 <div class="">

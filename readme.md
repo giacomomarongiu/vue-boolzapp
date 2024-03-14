@@ -33,11 +33,19 @@ permette di cancellare il messaggio selezionato
 - Verifico sia tutto ben collegato ok
 - Importo il layout statico del vecchio file ok
 - Momentaneamente lascio perdere alcune imperfezioni di stile ok
+
 - Milestone 1
 -- Pulisco l'html e decido di lavorare con una sola card ok
 -- Studio la mia struttura dati su js ok
 -- Visualizzo nella finestra principale i messaggi dell'utente in verde quello dell'interlocutore in bianco ok
 --- Visualizzo prima un messaggio in modo statico ok
 --- SE lo status è sent lo pubblico nella colonna di destra SE NO nella colonna di sinistra ok
--- Modifico la card in modo da vedere dinamicamente il primo utente della mia struttura dati
---- Faccio un ciclo in modo da vedere non solo il primo utente ma tutti in fila
+-- Modifico la card in modo da vedere dinamicamente il primo utente della mia struttura dati ok
+--- Faccio un ciclo in modo da vedere non solo il primo utente ma tutti in fila ok
+
+- Milestione 2
+-- Visualizzo tutti messaggi del contatto nel pannello della conversazione ok
+-- Al click sul contatto devo attivare il pannello relativo all'utente
+--- Seguo lo stesso principio dello slider:
+--- Creo una variabile activeUser con valore 0 che mi servirà come indice
+--- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente
