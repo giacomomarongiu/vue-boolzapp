@@ -1,13 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    
+
+    <div id="app">
+        <main>
+            <!--main-->
+            <div id="site-main">
+                <!--My container for all the chat
+                    change dimension on breakpoint-->
+
+                <div class="chat-container d-flex">
+                    <!--chat divided left/right-->
+
+                    <!--left-side of the chat divided in 4 part-->
+                    <div class="col-left col-4 col-md-1 not-show">
+
+                        <!--1st part-->
+                        <div id="my-user">
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12 d-flex">
+
+                                    <a class="lets-show" href="">
+                                        <img class="img-100" src="./assets/img/avatar_io.jpg" alt="">
+                                        <div class="show-big">
+                                            <img class="big-profile" src="./assets/img/avatar_io.jpg" alt="">
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <ul class="my-menu card-bye d-flex">
+                                        <li><i class="fa-solid fa-ellipsis-vertical fa-2x"></i></li>
+                                        <li><i class="fa-solid fa-message fa-2x"></i></li>
+                                        <li><i class="fa-solid fa-circle-notch fa-2x"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--2nd part-->
+                        <div id="my-not" class="card-user col-12 d-flex card-bye">
+                            <div class="col-3 d-flex">
+                                <i class="fa-solid fa-bell-slash icon fa-2x"></i>
+                            </div>
+                            <div class="col-9 card-text">
+                                <h5>Ricevi notifiche di nuovi messaggi</h5>
+                                <p>Attiva notifiche desktop</p>
+                            </div>
+                        </div>
+
+                        <!--3rd part-->
+                        <div id="search-bar" class="col-12 d-flex card-bye">
+                            <i class="col-3 fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat..">
+                        </div>
+
+                        <!--4th part-->
+                        <div id="users-card-container">
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_1.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Michele</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_2.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Fabio</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_3.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Samuele</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_4.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Alessandro</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_5.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Alessandro L.</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_6.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Pippo Baudo</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-user col-12 d-flex">
+                                <div class="col-3 col-md-12">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_7.jpg">
+                                </div>
+                                <div class="col-9 card-bye">
+                                    <div class="card-text">
+                                        <div class="name-hour d-flex">
+                                            <h5>Pippo Franco</h5>
+                                            <p class="hour"> 16:15</p>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/left-side of the chat-->
+
+
+                    <!--right-side of the chat-->
+                    <!--chat divided up/middle/bottom-->
+                    <div class="col-right d-flex col-8 col-md-11 col-12-sm">
+
+                        <!--up part-->
+                        <div id="up-right" class="d-flex">
+                            <div class="col-2 text-center">
+                                <a class="lets-show" href="">
+                                    <img alt="" class="img-100" src="./assets/img/avatar_1.jpg">
+                                    <div class="show-big">
+                                        <img class="big-profile" src="./assets/img/avatar_1.jpg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-text col-9-sm col-8">
+                                <h5>Michele</h5>
+                                <p>Ultimo accesso oggi alle 16:26</p>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex card-bye-sm">
+                                <ul class="my-menu d-flex">
+                                    <li><i class="fa-solid fa-ellipsis-vertical fa-2x"></i></li>
+                                    <li><i class="fa-solid fa-paperclip fa-2x"></i></li>
+                                    <li><i class="fa-solid fa-magnifying-glass fa-2x"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--middle part-->
+                        <div id="middle-right" class="d-flex">
+                            <div id="r-square" class="square col-7 col-9-sm">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Dolorem excepturi laboriosam ut doloribus culpa accusantium, harum dolorum nisi ullam.
+                                Nam
+                                veritatis ullam incidunt. Accusamus sunt deleniti, at illo hic nemo mollitia sed atque
+                                illum
+                                nisi, nobis pariatur fugit. Sint, quibusdam
+                                <div class="">
+                                    <i class="fa-solid fa-chevron-down">
+                                        <ul class="hidden-menu">
+                                            <li class="menu-row">Pippo Baudo</li>
+                                            <li class="menu-row">Pippo Franco</li>
+                                            <li class="menu-row">Pippo Ganna</li>
+                                            <li class="menu-row">Pippo Tanto</li>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                            <div id="l-square" class="square col-7 col-9-sm">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing
+                                elit.
+                                Tenetur mollitia, aliquam ex maiores asperiores illo quidem! Exercitationem suscipit,
+                                ipsam
+                                neque unde ea modi fuga, aperiam magnam assumenda molestias provident autem, sapiente
+                                voluptate sapiente sed explicabo ducimus.
+                                <div> <i class="fa-solid fa-chevron-down">
+                                        <ul class="hidden-menu">
+                                            <li class="menu-row">Pippo Baudo</li>
+                                            <li class="menu-row">Pippo Franco</li>
+                                            <li class="menu-row">Pippo Ganna</li>
+                                            <li class="menu-row">Pippo Tanto</li>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--bottom part-->
+                        <div id="bottom-right" class="d-flex">
+                            <div class="emoji card-bye-sm"><i class="fa-regular fa-face-smile fa-2x">
+                                    <ul class="hidden-menu-emoji">
+                                        <li class="menu-row">
+                                            <ul class="d-flex">
+                                                <li><i class="fa-solid fa-face-smile fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-tired fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-surprise fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-wink fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-beam fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-tear fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-cry fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-rolling-eyes fa-2x"></i></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-row">
+                                            <ul class="d-flex">
+                                                <li><i class="fa-solid fa-face-smile fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-tired fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-surprise fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-wink fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-beam fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-tear fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-cry fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-rolling-eyes fa-2x"></i></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-row">
+                                            <ul class="d-flex">
+                                                <li><i class="fa-solid fa-face-smile fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-tired fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-surprise fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-wink fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-smile-beam fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-tear fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-sad-cry fa-2x"></i></li>
+                                                <li><i class="fa-solid fa-face-rolling-eyes fa-2x"></i></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </i></div>
+                            <input type="text" placeholder=" Scrivi un messaggio">
+                            <div class="emoji card-bye-sm"><i class="fa-solid fa-microphone fa-2x"></i></div>
+                        </div>
+                    </div>
+                    <!--/right-side of the chat-->
+
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
     <script src="./assets/js/app.js"></script>
 </body>
+
 </html>

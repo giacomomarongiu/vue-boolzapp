@@ -1,13 +1,10 @@
 
 # Milestone 1
-● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
-dall’interlocutore (bianco) assegnando due classi CSS diverse
-● Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
-nome e immagine di ogni contatto
+● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse
+● Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
 
 # Milestone 2
-● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
-messaggi relativi al contatto attivo all’interno del pannello della conversazione
+● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 ● Click sul contatto mostra la conversazione del contatto cliccato
 
 # Milestone 3
@@ -27,8 +24,16 @@ permette di cancellare il messaggio selezionato
 ● Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 
 # Consigli utili:
-● Si possono trascurare le scrollbar verticali, sia nel pannello dei messaggi, che nella
-lista dei contatti
+● Si possono trascurare le scrollbar verticali, sia nel pannello dei messaggi, che nella lista dei contatti
 ● I pulsanti e le icone possono non funzionare (a parte l’invio del messaggio)
 ● Per gestire le date, può essere utile la libreria Luxon
-● La struttura dell’array dei contatti potrebbe avere questa forma:
+● La struttura dell’array dei contatti potrebbe avere questa forma: (vedi js)
+
+## Steps
+- Verifico sia tutto ben collegato ok
+- Importo il layout statico del vecchio file ok
+- Momentaneamente lascio perdere alcune imperfezioni di stile ok
+- Milestone 1
+-- Pulisco l'html e decido di lavorare con una sola card
+-- Studio la mia struttura dati su js
+-- Modifico la card in modo da vedere dinamicamente il primo utente della mia struttura dati

@@ -1,3 +1,592 @@
-body{
-    background: #000;
+/*Colours*/
+:root {
+    --bool-bg-dark: #009688;
+    --bool-bg-light: #EAEAEA;
+    --bool-lightup: #8b8d83;
+    --bool-bg-windowup: #8EDAFC;
+    --bool-bg-text: #D5F9BA;
+}
+
+
+
+
+/*Reset CSS*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-size: small;
+}
+
+body {
+    background-image: linear-gradient(to bottom, #009688 0%, #009688 120px, #EAEAEA 120px, #EAEAEA 100%);
+    overflow: hidden;
+
+}
+
+
+/*Debug*/
+
+/*.debug main {
+    background-color: blueviolet;
+    height: 100vh;
+    width: 100vw;
+}
+
+.debug .col-4 {
+    background-color: aqua;
+    border: 1px solid black;
+}
+
+.debug .col-8 {
+    background-color: greenyellow;
+}*/
+
+/*.debug #my-user {
+    height: calc((100%/8));
+}
+
+.debug #my-not {
+    height: calc((100%/8));
+}
+
+.debug #search-bar {
+    height: calc((100%/16));
+    background-color: white;
+}
+
+.debug .card-user {
+    min-height: calc((100%/8));
+}
+
+.debug #up-right {
+    height: calc((100%/8));
+    background-color: chocolate;
+}
+
+.debug #bottom-right {
+    height: 7%;
+    background-color: chocolate;
+}
+
+.debug .square {
+    background-color: darkorchid;
+}*/
+
+
+
+
+/*Utilities*/
+.d-flex {
+    display: flex;
+}
+
+.col-2 {
+    width: calc((100%/12)*2);
+    height: 90%;
+}
+
+.col-3 {
+    width: calc((100%/12)*3);
+}
+
+.col-4 {
+    width: calc((100%/12)*4);
+}
+
+.col-7 {
+    width: calc((100%/12)*7);
+}
+
+.col-8 {
+    width: calc((100%/12)*8);
+}
+
+.col-9 {
+    min-width: calc((100%/12)*9);
+}
+
+
+/*used for all the images*/
+.img-100 {
+    width: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 10%;
+    object-fit: contain;
+}
+
+/*used for the bell*/
+.icon {
+    max-width: 90%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    max-height: 90%;
+    margin-left: 10%;
+    object-fit: contain;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.card-text p {
+    padding-top: 0.2rem;
+    color: #8b8d83;
+}
+
+.hour {
+    padding-right: 10px;
+}
+
+
+/*Big things*/
+
+main {
+    height: 100vh;
+    width: 100vw;
+}
+
+
+#site-main {
+    padding-top: 2vh;
+}
+
+.chat-container {
+    width: 80%;
+    height: 96vh;
+    margin: auto;
+}
+
+
+/*LEFT COLUMN*/
+
+.col-left {
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+
+/*My user*/
+
+
+#my-user .card-user {
+    background-color: var(--bool-bg-light);
+}
+
+.my-menu {
+    list-style: none;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10%;
+    padding-right: 10%;
+    color: var(--bool-lightup);
+}
+
+
+
+/*My not*/
+#my-not {
+    background-color: #8EDAFC;
+    height: 95px;
+}
+
+#my-not .col-3 {
+    width: 70%;
+    align-items: center;
+    /*to fix the bell*/
+}
+
+#my-not .icon {
+    width: 80%;
+    text-align: center;
+    background-color: white;
+    color: #8EDAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*to fix the bell*/
+}
+
+#my-not p {
+    text-decoration: underline;
+}
+
+
+
+
+/*Search bar*/
+#search-bar {
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fafafa;
+    padding: 5px;
+}
+
+#search-bar i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 30px;
+    border: none;
+    color: #8b8d83;
+}
+
+#search-bar input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    color: #8b8d83;
+}
+
+
+
+
+/*card-users-container*/
+.card-user {
+    height: 85px;
+    align-items: center;
+    background-color: white;
+    /*border-bottom: 1px solid grey;*/
+}
+
+.name-hour {
+    justify-content: space-between;
+}
+
+
+
+
+/*RIGHT COLUMN*/
+
+.col-right {
+    flex-direction: column;
+}
+
+
+/*up-right*/
+#up-right {
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    background-color: #EAEAEA;
+}
+
+#up-right .img-100 {
+    width: auto;
+    height: 100%;
+    padding: 0;
+}
+
+#up-right ul li {
+    padding-right: 5px;
+}
+
+
+
+
+/*middle-right*/
+
+#middle-right {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    flex-direction: column;
+    gap: 3%;
+    padding: 5%;
+    background-image: url('../img/mine.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.square {
+    display: flex;
+    padding: 20px;
+    border-radius: 5px 5px 5px 5px;
+    gap: 5px
+}
+
+
+#r-square {
+    align-self: flex-end;
+    background-color: #D5F9BA;
+}
+
+#l-square {
+    background-color: #ffff;
+}
+
+
+
+
+/*bottom-right*/
+
+#bottom-right {
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 1% 2%;
+    gap: 20px;
+}
+
+
+#bottom-right input {
+    width: 100%;
+    height: 95%;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.emoji {
+    color: #8b8d83;
+    font-size: larger;
+}
+
+/*BONUS*/
+
+
+/* SHOW BIG 
+When your are in :hover on the user profile-pic you can see the img big*/
+
+.col-right {
+    position: relative;
+}
+
+.show-big {
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #00968777;
+    transition-delay: 3s;
+    display: none ;
+
+    & .big-profile {
+        max-width: 60%;
+        padding-top: 30px;
+    }
+}
+
+.chat-container{
+    position: relative;
+}
+
+.col-left .big-profile{
+    position: absolute;
+    left:33%;
+}
+
+
+
+.lets-show:hover {
+
+    & .show-big {
+        display: block;
+    }
+}
+
+
+
+
+/*Hidden Menu - ChevronDown*/
+#middle-right i {
+    position: relative;
+}
+
+.hidden-menu {
+    background-color: rgb(173, 172, 172);
+    color: white;
+    width: max-content;
+    padding: 0.5rem 0;
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    left: -70px;
+    border-radius: 5px;
+    display: none;
+
+}
+
+#middle-right ul {
+    list-style: none;
+}
+
+#middle-right li {
+    padding: 0.5rem 1rem;
+}
+
+#middle-right li:hover {
+    color: #009688;
+    background-color: #EAEAEA;
+}
+
+
+#middle-right i:hover {
+    transition: 2s;
+
+    & .hidden-menu {
+
+        display: block;
+    }
+}
+
+
+/*Hidden Menu - EMOJI*/
+
+#bottom-right i{
+    position: relative;
+}
+
+.hidden-menu-emoji {
+    background-color: rgb(173, 172, 172);
+    color: white;
+    width:max-content;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 35px;
+    left: 0;
+    border-radius: 5px;
+    display: none;
+}
+
+#bottom-right ul {
+    list-style: none;
+    width: auto;
+
+    & li{
+        padding: 4px;
+    }
+}
+
+#bottom-right .d-flex>li {
+
+    width: max-content;
+}
+
+#bottom-right .d-flex>li:hover {
+    color: yellow;
+}
+
+
+#bottom-right i:hover {
+    transition: 1s;
+
+    & .hidden-menu-emoji {
+
+        display: block;
+    }
+}
+
+
+
+
+/*End of main*/
+
+
+
+/*Media Query*/
+@media screen and (max-width:991px) {
+
+    #site-main {
+        padding: 0;
+    }
+
+    .chat-container {
+        width: 100%;
+        height: 100vh;
+        margin: auto;
+    }
+
+    #card-users-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-100 {
+        padding: 15%;
+    }
+
+    .col-left .col-3 {
+        height: auto;
+    }
+
+
+    #site-main {
+        padding: 0;
+    }
+
+    #up-right {
+        height: 65px;
+    }
+
+    .card-user {
+        height: 65px;
+
+    }
+
+    .col-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col-md-2 {
+        min-width: 120px;
+    }
+
+    .col-md-1 {
+        max-width: calc((100%/12)*1);
+        min-width: 65px;
+    }
+
+    .col-md-11 {
+        width: calc((100%/12)*11);
+
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+
+    .card-bye {
+        display: none;
+    }
+}
+
+@media screen and (max-width:540px) {
+    .not-show {
+        display: none;
+    }
+
+    #up-right {
+        justify-content: center;
+    }
+
+
+    #bottom-right {
+        justify-content: center;
+    }
+
+    .col-12-sm {
+        width: 100%;
+    }
+
+    .col-9-sm {
+        width: calc((100%/12)*9);
+    }
+
+    .card-bye-sm {
+        display: none;
+    }
+
 }
