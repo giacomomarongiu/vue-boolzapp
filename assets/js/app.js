@@ -5,7 +5,9 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            clock: "",
+            // Creo una variabile con stringa vuota
+            // La collego alla barra "Cerca o inizia una nuova chat" con v-model
+            searchedValue: "",
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
             // Per le risposte automatiche creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
@@ -15,6 +17,7 @@ createApp({
                 status: 'received', //sarà sempre sent
             },
             // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
+            // La collego alla barra "Scrivi messaggio" con v-model
             newMessage: {
                 date: "now", //cambio dopo
                 message: "", //qui il messaggio dell'input
@@ -183,7 +186,8 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            printedContacts: [],
         }
     },
     methods: {
@@ -195,7 +199,6 @@ createApp({
             }
             return 'received'
         },
-
 
         //La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
         sendMessage() {
@@ -226,6 +229,41 @@ createApp({
             (this.contacts[this.userActive].messages).push({ ...this.userReply })
         },
 
-
+        // Crea l'array dei contatti da stampare nella barra
+        userBar() {
+            // Verifico la mia stringa 
+            // console.log(this.searchedValue);
+            // Verifico il mio array
+            // console.log(this.contacts);
+            // Devo "filtrare" il mio array di oggetti quindi uso un filter
+            // Utilizzo il mio array vuoto ptintedContacts per filtrare contacts
+            // SE non cerco nulla stampo tutti i contatti
+            if (this.searchedValue == "") {
+                this.printedContacts = this.contacts;
+            } else {
+                // Se NO li filtro
+                this.printedContacts = this.contacts.filter((searchString, index) => {
+                    // Verifico se sto prendendo bene il name
+                    // console.log(this.contacts[index].name);
+                    // Assegno il valore in input al paramentro della funzione
+                    searchString = this.searchedValue;
+                    // Verifico assegnazione
+                    // console.log(searchString);
+                    // Confronto la mia stringa con i nomi dei miei contacts
+                    // Miglioro il confronto: non stampo solo se la stringa è uguale ma anche se c'è riscontro con le posizioni delle lettere
+                    // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore minuscolo
+                    if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase()=== searchString.toLowerCase()) {
+                        return true;
+                    } /* else {
+                    return console.log("NON E' TRUE"); Verifica
+                } */
+                })
+            }
+        }
+    },
+    // Chiamo la funzione searchUser qui
+    // All'inizio la searchBar sarà vuota quindi devo stampare tutti i contatti
+    created() {
+        this.userBar()
     }
 }).mount('#app')

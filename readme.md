@@ -58,3 +58,14 @@ permette di cancellare il messaggio selezionato
 -- Per le risposte automatiche creo una struttura dati di appoggio con un testo fisso
 -- Creo una funzione che aggiunge un oggetto il cui testo è "ok" all'array dei messaggi nell'utente selezionato
 -- Attraverso setTimeout (in sendMessage) metto un timer di un secondo per la funzione di replyMessage
+
+- Milestone 4
+-- Verifico che la barra di ricerca sia ben predisposta
+-- Creo una variabile con stringa vuota
+-- Assegno con v-on il valore in input alla stringa vuota appena creata
+-- Creo un array userBar che utilizzerò per stampare gli oggetti frutto della ricerca
+-- Confronto la mia stringa con i nomi dei miei contacts
+-- Faccio sì che vengano stampati solo quelli la cui stringa coincide con il nome
+-- Miglioro il confronto: non stampo solo se la stringa è uguale ma anche se c'è riscontro con le posizioni delle lettere
+--- Utilizzo slice e toLowerCase
+-- Hooko la funzione userBar nel Created per gestire il caso iniziale 

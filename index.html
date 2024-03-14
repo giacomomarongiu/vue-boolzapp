@@ -60,14 +60,16 @@
                         </div>
 
                         <!--3rd part-->
-                        <div id="search-bar" class="col-12 d-flex card-bye">
+                        <div id="search-bar" class="col-12 d-flex card-bye" @keyup="userBar()">
                             <i class="col-3 fa-solid fa-magnifying-glass"></i>
-                            <input type="text" placeholder="Cerca o inizia una nuova chat..">
+                            <!-- Assegno con v-on il valore in input alla stringa vuota searchedValue in js-->
+                            <!--Utilizzo keyup enter per far si che venga monitorata e aggiornata la lista di contatti da stampare con searchUser()-->
+                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue" @keyup.enter="searchUser()">
                         </div>
 
                         <!--4th part-->
                         <!--Faccio un ciclo con v-for in modo da vedere non solo il primo utente ma tutti in fila-->
-                        <div id="users-card-container" v-for="(user, index) in contacts">
+                        <div id="users-card-container" v-for="(user, index) in printedContacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
                             <!-- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente-->
                             <div class="card-user col-12 d-flex" @click="userActive=index">
