@@ -5,14 +5,16 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            clock: "",
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
-            // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
+            // Per le risposte automatiche creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             userReply: {
                 date: "now", //cambio dopo
                 message: "Ok",
                 status: 'received', //sarà sempre sent
             },
+            // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             newMessage: {
                 date: "now", //cambio dopo
                 message: "", //qui il messaggio dell'input
@@ -194,9 +196,6 @@ createApp({
             return 'received'
         },
 
-        replyMessage(){
-            (this.contacts[this.userActive].messages).push({...this.userReply})
-        },
 
         //La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
         sendMessage() {
@@ -211,14 +210,20 @@ createApp({
             // Verifico se newMessage ha il messaggio in lettura corretto
             console.log(this.newMessage);
             // Aggiungo la todo all'array con l'operatore spred (push mi crea problemi per via del passaggio tramite reference)
-            (this.contacts[this.userActive].messages).push({...this.newMessage})
+            (this.contacts[this.userActive].messages).push({ ...this.newMessage })
             // Pulisco l'input
-            this.newMessage.message="";
+            this.newMessage.message = "";
             //Verifico se è stato aggiunto correttamente
             console.log(this.contacts[this.userActive].messages);
-            
-            const clock = setInterval(this.replyMessage(),5000)
-            clearInterval(clock)
+
+            setTimeout(() => { this.replyMessage() }, 1000) // Vedi sotto
+        },
+
+        //Creo una funzione che aggiunge un oggetto il cui testo è "ok" all'array dei messaggi nell'utente selezionato
+        replyMessage() {
+            // Mi evito i log perché sono uguali a quelli di sendMessage
+            // Unica differenza: il mio oggetto è statitico (userReply)
+            (this.contacts[this.userActive].messages).push({ ...this.userReply })
         },
 
 

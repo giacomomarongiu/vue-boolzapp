@@ -55,3 +55,6 @@ permette di cancellare il messaggio selezionato
 -- Verifico che la struttura dati di appoggio sia la stessa dei messaggi già esistenti
 -- Quando clicko il tasto Enter chiamo una funzione
 -- La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente
+-- Per le risposte automatiche creo una struttura dati di appoggio con un testo fisso
+-- Creo una funzione che aggiunge un oggetto il cui testo è "ok" all'array dei messaggi nell'utente selezionato
+-- Attraverso setTimeout (in sendMessage) metto un timer di un secondo per la funzione di replyMessage
