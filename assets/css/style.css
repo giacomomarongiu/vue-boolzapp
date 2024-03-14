@@ -159,6 +159,7 @@ main {
     width: 80%;
     height: 96vh;
     margin: auto;
+    border: 2px solid black
 }
 
 
@@ -313,12 +314,12 @@ main {
 }
 
 
-#r-square {
+.sent {
     align-self: flex-end;
     background-color: #D5F9BA;
 }
 
-#l-square {
+.received {
     background-color: #ffff;
 }
 

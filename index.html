@@ -7,6 +7,7 @@
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/3a46370e2f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -66,6 +67,7 @@
 
                         <!--4th part-->
                         <div id="users-card-container">
+                            <!-- Questa è la card su cui lavorerò con VUE-->
                             <div class="card-user col-12 d-flex">
                                 <div class="col-3 col-md-12">
                                     <img alt="" class="img-100" src="./assets/img/avatar_1.jpg">
@@ -73,103 +75,17 @@
                                 <div class="col-9 card-bye">
                                     <div class="card-text">
                                         <div class="name-hour d-flex">
-                                            <h5>Michele</h5>
-                                            <p class="hour"> 16:15</p>
+                                            <!--Utilizzando Vue visualizzo il nome del mio utente-->
+                                            <h5>{{contacts[0].name}}</h5>
+                                            <!--Utilizzando Vue visualizzo il nome del mio utente-->
+                                            <p class="hour"></p>
                                         </div>
                                         <p>Lorem ipsum dolor sit.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_2.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Fabio</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_3.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Samuele</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_4.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Alessandro</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_5.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Alessandro L.</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_6.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Pippo Baudo</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-user col-12 d-flex">
-                                <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_7.jpg">
-                                </div>
-                                <div class="col-9 card-bye">
-                                    <div class="card-text">
-                                        <div class="name-hour d-flex">
-                                            <h5>Pippo Franco</h5>
-                                            <p class="hour"> 16:15</p>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit.</p>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -204,33 +120,16 @@
                         </div>
 
                         <!--middle part-->
+                        <!--Qui applico un v-for per iterare la lista dei messaggi dell'utente-->
                         <div id="middle-right" class="d-flex">
-                            <div id="r-square" class="square col-7 col-9-sm">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Dolorem excepturi laboriosam ut doloribus culpa accusantium, harum dolorum nisi ullam.
-                                Nam
-                                veritatis ullam incidunt. Accusamus sunt deleniti, at illo hic nemo mollitia sed atque
-                                illum
-                                nisi, nobis pariatur fugit. Sint, quibusdam
+                            <!-- La colonna di destra cambia da right a received
+                            Quella di sinistra da left a sent-->
+                            <!--Utilizzando la funzione sendOrReceiced assegno la classe coretta al messaggio del mio oggetto-->
+                            <div class="square col-7 col-9-sm" v-for="(msg, index) in contacts[0].messages"
+                                :class="sendOrReceived(msg.status)">
+                                {{msg.message}}
                                 <div class="">
                                     <i class="fa-solid fa-chevron-down">
-                                        <ul class="hidden-menu">
-                                            <li class="menu-row">Pippo Baudo</li>
-                                            <li class="menu-row">Pippo Franco</li>
-                                            <li class="menu-row">Pippo Ganna</li>
-                                            <li class="menu-row">Pippo Tanto</li>
-                                        </ul>
-                                    </i>
-                                </div>
-                            </div>
-                            <div id="l-square" class="square col-7 col-9-sm">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Tenetur mollitia, aliquam ex maiores asperiores illo quidem! Exercitationem suscipit,
-                                ipsam
-                                neque unde ea modi fuga, aperiam magnam assumenda molestias provident autem, sapiente
-                                voluptate sapiente sed explicabo ducimus.
-                                <div> <i class="fa-solid fa-chevron-down">
                                         <ul class="hidden-menu">
                                             <li class="menu-row">Pippo Baudo</li>
                                             <li class="menu-row">Pippo Franco</li>

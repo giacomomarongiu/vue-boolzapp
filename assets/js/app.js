@@ -5,6 +5,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            // array di oggetti che contengono due stringhe (nome e percorso immagine), un booleano e un array di oggetti
             contacts: [
                 {
                     name: 'Michele',
@@ -168,6 +169,16 @@ createApp({
                     ],
                 }
             ]
+        }
+    },
+    methods:{
+        sendOrReceived(string){
+            //faccio un leggo e vedo se prende giusto
+            console.log(string);
+            if (string=='sent'){
+                return 'sent'
+            } 
+            return 'received'
         }
     }
 }).mount('#app')

@@ -34,6 +34,9 @@ permette di cancellare il messaggio selezionato
 - Importo il layout statico del vecchio file ok
 - Momentaneamente lascio perdere alcune imperfezioni di stile ok
 - Milestone 1
--- Pulisco l'html e decido di lavorare con una sola card
--- Studio la mia struttura dati su js
+-- Pulisco l'html e decido di lavorare con una sola card ok
+-- Studio la mia struttura dati su js ok
+-- Visualizzo nella finestra principale i messaggi dell'utente in verde quello dell'interlocutore in bianco ok
+--- Visualizzo prima un messaggio in modo statico ok
+--- SE lo status è sent lo pubblico nella colonna di destra SE NO nella colonna di sinistra ok
 -- Modifico la card in modo da vedere dinamicamente il primo utente della mia struttura dati
