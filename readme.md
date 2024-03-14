@@ -69,3 +69,8 @@ permette di cancellare il messaggio selezionato
 -- Miglioro il confronto: non stampo solo se la stringa è uguale ma anche se c'è riscontro con le posizioni delle lettere
 --- Utilizzo slice e toLowerCase
 -- Hooko la funzione userBar nel Created per gestire il caso iniziale 
+
+- Milestone 5 - opzionale
+- Aggiungo al menù a tendina un icona
+- Al click sull'icona partirà una funzione removeMessage() a cui passerò l'indice
+- La funzione removeMessage() dovrà cancellare il messaggio in questione con splice (grazie all'indice)

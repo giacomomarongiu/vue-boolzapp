@@ -404,14 +404,14 @@ When your are in :hover on the user profile-pic you can see the img big*/
 }
 
 .hidden-menu {
-    background-color: rgb(173, 172, 172);
+    background-color: rgb(255, 0, 0);
     color: white;
     width: max-content;
     padding: 0.5rem 0;
     position: absolute;
     z-index: 1;
-    top: 12px;
-    left: -70px;
+    top: 20px;
+    left: -12px;
     border-radius: 5px;
     display: none;
 

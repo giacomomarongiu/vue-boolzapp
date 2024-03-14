@@ -191,6 +191,8 @@ createApp({
         }
     },
     methods: {
+
+        //If condition for class received/sent
         sendOrReceived(string) {
             //faccio un leggo e vedo se prende giusto
             //console.log(string);
@@ -259,6 +261,19 @@ createApp({
                 } */
                 })
             }
+        },
+
+        //
+        removeMessage(userIndex){
+            //Verifico se si triggera bene
+            console.log("Cancella!");
+            //Verifico l'index passato
+            console.log(userIndex);
+            //Verifico se è corretto l'elemento
+            console.log( this.contacts[this.userActive].messages);
+            console.log( this.contacts[this.userActive].messages[userIndex]);
+            //Cancello il testo selezionato grazie all'indice che ho ricevuto
+            (this.contacts[this.userActive].messages).splice(userIndex,1)
         }
     },
     // Chiamo la funzione searchUser qui
