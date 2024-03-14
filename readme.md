@@ -49,3 +49,9 @@ permette di cancellare il messaggio selezionato
 --- Seguo lo stesso principio dello slider:
 --- Creo una variabile activeUser con valore 0 che mi servirà come indice
 --- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente
+
+- Milestone 3
+-- La barra di sotto (input) devo far si che sia collegata a un oggetto/variabile
+-- Verifico che la struttura dati di appoggio sia la stessa dei messaggi già esistenti
+-- Quando clicko il tasto Enter chiamo una funzione
+-- La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente

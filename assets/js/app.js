@@ -7,6 +7,12 @@ createApp({
         return {
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
+            // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
+            newMessage: {
+                date: "now", //cambio dopo
+                message: "", //qui il messaggio dell'input
+                status: 'sent', //sarà sempre sent
+            },
             // array di oggetti che contengono due stringhe (nome e percorso immagine), un booleano e un array di oggetti
             contacts: [
                 {
@@ -173,14 +179,33 @@ createApp({
             ]
         }
     },
-    methods:{
-        sendOrReceived(string){
+    methods: {
+        sendOrReceived(string) {
             //faccio un leggo e vedo se prende giusto
-            console.log(string);
-            if (string=='sent'){
+            //console.log(string);
+            if (string == 'sent') {
                 return 'sent'
-            } 
+            }
             return 'received'
-        }
+        },
+
+        //La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
+        sendMessage() {
+            //Verifico se è ben collegata
+            console.log("QUI IL MESSAGGIO UTENTE");
+            //Verifico cosa ho con This
+            console.log(this.contacts);
+            //Conosco quale utente riceverà il messaggio perché ho userActive
+            console.log(this.contacts[this.userActive]);
+            // Verifico se è l'array giusto
+            console.log(this.contacts[this.userActive].messages);
+            // Verifico se newMessage ha il messaggio in lettura corretto
+            console.log(this.newMessage);
+            // Aggiungo la todo all'array con l'operatore spred (push mi crea problemi per via del passaggio tramite reference)
+            (this.contacts[this.userActive].messages).push({...this.newMessage})
+            // Pulisco l'input
+            this.newMessage.message="";
+            //Verifico se è stato aggiunto correttamente
+            console.log(this.contacts[this.userActive].messages);        }
     }
 }).mount('#app')

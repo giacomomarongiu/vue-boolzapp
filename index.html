@@ -185,7 +185,10 @@
                                         </li>
                                     </ul>
                                 </i></div>
-                            <input type="text" placeholder=" Scrivi un messaggio">
+                            <!-- L'input  è collegato a un oggetto/variabile di appoggio-->
+                            <!-- -- Quando clicko il tasto Enter chiamo la funzion sendMessage-->
+                            <input type="text" placeholder=" Scrivi un messaggio" v-model="newMessage.message"
+                                @keyup.enter="sendMessage()">
                             <div class="emoji card-bye-sm"><i class="fa-solid fa-microphone fa-2x"></i></div>
                         </div>
                     </div>
