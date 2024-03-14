@@ -66,21 +66,21 @@
                         </div>
 
                         <!--4th part-->
-                        <div id="users-card-container">
+                        <div id="users-card-container" v-for="(user, index) in contacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
                             <div class="card-user col-12 d-flex">
                                 <div class="col-3 col-md-12">
-                                    <img alt="" class="img-100" src="./assets/img/avatar_1.jpg">
+                                    <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
                                     <div class="card-text">
                                         <div class="name-hour d-flex">
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
-                                            <h5>{{contacts[0].name}}</h5>
+                                            <h5>{{user.name}}</h5>
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
-                                            <p class="hour"></p>
+                                            <p class="hour">{{user.date}}</p>
                                         </div>
-                                        <p>Lorem ipsum dolor sit.</p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>

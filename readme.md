@@ -40,3 +40,4 @@ permette di cancellare il messaggio selezionato
 --- Visualizzo prima un messaggio in modo statico ok
 --- SE lo status è sent lo pubblico nella colonna di destra SE NO nella colonna di sinistra ok
 -- Modifico la card in modo da vedere dinamicamente il primo utente della mia struttura dati
+--- Faccio un ciclo in modo da vedere non solo il primo utente ma tutti in fila
