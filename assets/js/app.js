@@ -8,6 +8,11 @@ createApp({
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
             // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
+            userReply: {
+                date: "now", //cambio dopo
+                message: "Ok",
+                status: 'received', //sarà sempre sent
+            },
             newMessage: {
                 date: "now", //cambio dopo
                 message: "", //qui il messaggio dell'input
@@ -189,6 +194,10 @@ createApp({
             return 'received'
         },
 
+        replyMessage(){
+            (this.contacts[this.userActive].messages).push({...this.userReply})
+        },
+
         //La funzione sendMessage mi permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
         sendMessage() {
             //Verifico se è ben collegata
@@ -206,6 +215,12 @@ createApp({
             // Pulisco l'input
             this.newMessage.message="";
             //Verifico se è stato aggiunto correttamente
-            console.log(this.contacts[this.userActive].messages);        }
+            console.log(this.contacts[this.userActive].messages);
+            
+            const clock = setInterval(this.replyMessage(),5000)
+            clearInterval(clock)
+        },
+
+
     }
 }).mount('#app')
