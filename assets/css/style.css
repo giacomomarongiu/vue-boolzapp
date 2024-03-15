@@ -163,7 +163,7 @@ main {
     width: 80%;
     height: 96vh;
     margin: auto;
-    border: 2px solid black
+    border: 1px solid rgba(0, 0, 0, 0.38)
 }
 
 
@@ -183,12 +183,14 @@ main {
     max-height: 85px;
 }
 
-.lets-show{
+.lets-show {
     object-fit: contain;
 }
-.lets-show .img-100{
-   max-height: 85px;
+
+.lets-show .img-100 {
+    max-height: 85px;
 }
+
 .my-menu {
     list-style: none;
     align-items: center;
@@ -203,10 +205,10 @@ main {
 /*My not*/
 #my-not {
     background-color: #8EDAFC;
-padding: 5px;
+    padding: 5px;
 }
 
-#my-not .col-3{
+#my-not .col-3 {
     max-width: 100%;
 }
 
@@ -261,7 +263,7 @@ padding: 5px;
 .card-user {
     align-items: center;
     background-color: white;
-    /*border-bottom: 1px solid grey;*/
+    border-bottom: 1px solid rgb(227, 218, 218);
 }
 
 .name-hour {
@@ -336,6 +338,10 @@ padding: 5px;
     background-color: #ffff;
 }
 
+.msg-w-100{
+    width: 90%;
+word-break: break-all;
+}
 
 
 
@@ -413,7 +419,14 @@ When your are in :hover on the user profile-pic you can see the img big*/
 /*Hidden Menu - ChevronDown*/
 #middle-right i {
     position: relative;
+    transition: 0.4s;
+
+    i:hover{
+
+    }
 }
+
+
 
 .hidden-menu {
     background-color: rgb(255, 0, 0);
@@ -423,7 +436,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
     position: absolute;
     z-index: 1;
     top: 0px;
-    left: 0px;
+    left: 13px;
     border-radius: 5px;
     display: none;
 
@@ -436,6 +449,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
 #middle-right li {
     padding: 0.5rem 1rem;
     width: 100%;
+    transition: 0.4s;
 }
 
 #middle-right li:hover {
@@ -444,7 +458,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
 }
 
 
-#middle-right i:hover {
+#middle-right .fa-chevron-down:hover {
 
     & .hidden-menu {
 
@@ -544,10 +558,6 @@ When your are in :hover on the user profile-pic you can see the img big*/
         height: 65px;
     }
 
-    .card-user {
-        height: 65px;
-
-    }
 
     .col-left {
         display: flex;

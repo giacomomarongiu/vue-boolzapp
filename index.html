@@ -149,7 +149,7 @@
                             <div class="square col-7 col-9-sm"
                                 v-for="(msg, index) in printedContacts[userActive].messages"
                                 :class="sendOrReceived(msg.status)">
-                                <div>{{msg.message}}</div>
+                                <div class="msg-w-100">{{msg.message}}</div>
                                 <div class="">
                                     <i class="fa-solid fa-chevron-down">
                                         <ul class="hidden-menu">
