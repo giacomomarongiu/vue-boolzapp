@@ -81,17 +81,17 @@
                                     <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
-                                    <div class="card-text d-flex justufy-between" v-if="user.message">
+                                    <div class="card-text d-flex justufy-between">
                                         <div class="d-flex col-8" >
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                             <div class="left-user">
-                                                <h5>{{user.name}}</h5>
+                                                <h5 >{{user.name}}</h5>
                                                 <!--Visualizzo l'ultimo messaggio inserito nell'array dei messaggi-->
-                                                <div>{{user.messages[(user.messages.length -1)].message}}</div>
+                                                <div v-if="user.messages[(user.messages.length -1)]">{{user.messages[(user.messages.length -1)].message}}</div>
                                             </div>
                                         </div>
                                         <!--Utilizzando Vue visualizzola data dell'ultimo messaggio del mio utente del mio utente-->
-                                        <p class="hour col-4">{{user.messages[(user.messages.length -1)].date}}</p>
+                                        <p class="hour col-4" v-if="user.messages[(user.messages.length -1)]">{{user.messages[(user.messages.length -1)].date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                             <!--Utilizzando la funzione sendOrReceiced assegno la classe coretta al messaggio del mio oggetto-->
                             <div class="square col-7 col-9-sm" v-for="(msg, index) in contacts[userActive].messages"
                                 :class="sendOrReceived(msg.status)">
-                                {{msg.message}}
+                                <div v-if="msg.message">{{msg.message}}</div>
                                 <div class="">
                                     <i class="fa-solid fa-chevron-down">
                                         <ul class="hidden-menu">

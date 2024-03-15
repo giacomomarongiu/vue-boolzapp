@@ -274,14 +274,10 @@ createApp({
             console.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
             console.log(((this.contacts[this.userActive].messages.length === 1)));
-            if ((this.contacts[this.userActive].messages.length === 1)) {
-                console.log((this.contacts[this.userActive].messages));
-                this.contacts[this.userActive].messages.pop()
 
-            } else {
-                (this.contacts[this.userActive].messages).splice(userIndex, 1)
+            (this.contacts[this.userActive].messages).splice(userIndex, 1)
 
-            }
+
 
         },
 
