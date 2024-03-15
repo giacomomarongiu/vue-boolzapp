@@ -14,7 +14,7 @@ createApp({
             userReply: {
                 date: "now", //cambio dopo
                 message: "Ok",
-                status: 'received', //sarà sempre sent
+                status: 'received', //sarà sempre received
             },
             // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             // La collego alla barra "Scrivi messaggio" con v-model
@@ -254,7 +254,7 @@ createApp({
                     // Confronto la mia stringa con i nomi dei miei contacts
                     // Miglioro il confronto: non stampo solo se la stringa è uguale ma anche se c'è riscontro con le posizioni delle lettere
                     // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore minuscolo
-                    if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase()=== searchString.toLowerCase()) {
+                    if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase() === searchString.toLowerCase()) {
                         return true;
                     } /* else {
                     return console.log("NON E' TRUE"); Verifica
@@ -264,17 +264,28 @@ createApp({
         },
 
         // Rimuove il messaggio relativo all'index passato
-        removeMessage(userIndex){
+        removeMessage(userIndex) {
             //Verifico se si triggera bene
-            console.log("Cancella!");
+            //console.log("Cancella!");
             //Verifico l'index passato
-            console.log(userIndex);
+            //console.log(userIndex);
             //Verifico se è corretto l'elemento
-            console.log( this.contacts[this.userActive].messages);
-            console.log( this.contacts[this.userActive].messages[userIndex]);
+            //console.log(this.contacts[this.userActive].messages);
+            //onsole.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
-            (this.contacts[this.userActive].messages).splice(userIndex,1)
-        }
+            // console.log(((this.contacts[this.userActive].messages.length === 1)));
+            /*             if ((this.contacts[this.userActive].messages.length === 1)) {
+                           console.log( (this.contacts[this.userActive].messages));
+                           this.contacts[this.userActive].messages= [...this.contacts[this.userActive].messages];
+                           (this.contacts[this.userActive].messages).splice(-1, 1)
+            
+                        } else {
+            
+            
+                        } */
+            (this.contacts[this.userActive].messages).splice(userIndex, 1)
+        },
+
     },
     // Chiamo la funzione searchUser qui
     // All'inizio la searchBar sarà vuota quindi devo stampare tutti i contatti

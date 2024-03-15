@@ -417,8 +417,8 @@ When your are in :hover on the user profile-pic you can see the img big*/
     padding: 0.5rem 0;
     position: absolute;
     z-index: 1;
-    top: 20px;
-    left: -12px;
+    top: 0px;
+    left: 0px;
     border-radius: 5px;
     display: none;
 
@@ -439,7 +439,6 @@ When your are in :hover on the user profile-pic you can see the img big*/
 
 
 #middle-right i:hover {
-    transition: 2s;
 
     & .hidden-menu {
 
@@ -452,6 +451,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
 
 #bottom-right i{
     position: relative;
+    
 }
 
 .hidden-menu-emoji {
