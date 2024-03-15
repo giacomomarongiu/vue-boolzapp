@@ -126,7 +126,9 @@
                             <div class="card-text col-9-sm col-8" v-if="printedContacts.length>0">
                                 <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                 <h5>{{printedContacts[userActive].name}}</h5>
-                                <p>{{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}</p>
+                                    <p v-if="printedContacts[userActive].messages.length-1>0">
+                                        {{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}
+                                    </p>
                             </div>
                             <div v-else>Nessuna corrispondenza trovata</div>
 
@@ -223,9 +225,9 @@
         </main>
 
     </div>
-    
+
     <script src="./assets/js/contacts.js" type="module"></script>
-    <script src="./assets/js/app.js"  type="module"></script>
+    <script src="./assets/js/app.js" type="module"></script>
 </body>
 
 </html>
