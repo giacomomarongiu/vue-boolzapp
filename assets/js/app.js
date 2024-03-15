@@ -70,6 +70,7 @@ createApp({
                     } /* else {
                         return console.log("NON E' TRUE"); //Verifica
                     } */
+
                 })
             }
         },
@@ -107,6 +108,15 @@ createApp({
             //Verifico se è stato aggiunto correttamente
             console.log(this.contacts[this.userActive].messages);
             setTimeout(() => { this.replyMessage() }, 1000) // Vedi sotto
+            // Se ho mando un messaggio a un utente questo diventa il primo della lista nella userBar
+            //Utilizzo un var locale di appoggio
+            let myLastUser = this.contacts[this.userActive];
+            // Cancello l'oggetto appena creato
+            this.contacts.splice(this.userActive,1);
+            // Lo ri-inserisco, ma in cima
+            this.contacts.unshift(myLastUser);
+            // L'oggetto in cima avrà sempre indice 0
+            this.userActive=0;
         },
 
         //Creo una funzione che aggiunge un oggetto il cui testo è "ok" all'array dei messaggi nell'utente selezionato

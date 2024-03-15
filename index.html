@@ -126,11 +126,11 @@
                             <div class="card-text col-9-sm col-8" v-if="printedContacts.length>0">
                                 <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                 <h5>{{printedContacts[userActive].name}}</h5>
-                                    <p v-if="printedContacts[userActive].messages.length-1>0">
-                                        {{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}
-                                    </p>
+                                <p v-if="printedContacts[userActive].messages.length-1>0">
+                                    {{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}
+                                </p>
                             </div>
-                            <div v-else>Nessuna corrispondenza trovata</div>
+                            <div v-else class="text-empty">Nessuna corrispondenza trovata</div>
 
                             <div class="col-2 col-md-2 d-flex card-bye-sm">
                                 <ul class="my-menu d-flex">
@@ -172,30 +172,6 @@
                         <div id="bottom-right" class="d-flex">
                             <div class="emoji card-bye-sm"><i class="fa-regular fa-face-smile fa-2x">
                                     <ul class="hidden-menu-emoji">
-                                        <li class="menu-row">
-                                            <ul class="d-flex">
-                                                <li><i class="fa-solid fa-face-smile fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-tired fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-surprise fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-smile-wink fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-smile-beam fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-sad-tear fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-sad-cry fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-rolling-eyes fa-2x"></i></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-row">
-                                            <ul class="d-flex">
-                                                <li><i class="fa-solid fa-face-smile fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-tired fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-surprise fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-smile-wink fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-smile-beam fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-sad-tear fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-sad-cry fa-2x"></i></li>
-                                                <li><i class="fa-solid fa-face-rolling-eyes fa-2x"></i></li>
-                                            </ul>
-                                        </li>
                                         <li class="menu-row">
                                             <ul class="d-flex">
                                                 <li><i class="fa-solid fa-face-smile fa-2x"></i></li>

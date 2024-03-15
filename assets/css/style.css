@@ -264,6 +264,13 @@ main {
     align-items: center;
     background-color: white;
     border-bottom: 1px solid rgb(227, 218, 218);
+    transition: opacity 0.5s linear;
+}
+
+.card-user:hover{
+    transition: 0.5s;
+    background: #00000015;
+    opacity: 1;
 }
 
 .name-hour {
@@ -291,6 +298,7 @@ main {
     height: 85px;
     background-color: #EAEAEA;
 }
+
 
 #up-right .img-100 {
     width: auto;
@@ -340,7 +348,7 @@ main {
 
 .msg-w-100 {
     width: 90%;
-    word-break:break-all;
+    word-break: break-all;
     line-break: auto;
 }
 
@@ -479,10 +487,12 @@ When your are in :hover on the user profile-pic you can see the img big*/
     padding: 0.5rem;
     position: absolute;
     z-index: 1;
-    bottom: 35px;
+    bottom: 30px;
     left: 0;
     border-radius: 5px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 #bottom-right ul {
@@ -508,8 +518,8 @@ When your are in :hover on the user profile-pic you can see the img big*/
     transition: 1s;
 
     & .hidden-menu-emoji {
-
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -553,7 +563,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
     }
 
     #up-right {
-        height: 65px;
+        min-height: 65px;
     }
 
 
