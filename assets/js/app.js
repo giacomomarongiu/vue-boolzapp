@@ -266,24 +266,23 @@ createApp({
         // Rimuove il messaggio relativo all'index passato
         removeMessage(userIndex) {
             //Verifico se si triggera bene
-            //console.log("Cancella!");
+            console.log("Cancella!");
             //Verifico l'index passato
-            //console.log(userIndex);
+            console.log(userIndex);
             //Verifico se è corretto l'elemento
-            //console.log(this.contacts[this.userActive].messages);
-            //onsole.log(this.contacts[this.userActive].messages[userIndex]);
+            console.log(this.contacts[this.userActive].messages);
+            console.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
-            // console.log(((this.contacts[this.userActive].messages.length === 1)));
-            /*             if ((this.contacts[this.userActive].messages.length === 1)) {
-                           console.log( (this.contacts[this.userActive].messages));
-                           this.contacts[this.userActive].messages= [...this.contacts[this.userActive].messages];
-                           (this.contacts[this.userActive].messages).splice(-1, 1)
-            
-                        } else {
-            
-            
-                        } */
-            (this.contacts[this.userActive].messages).splice(userIndex, 1)
+            console.log(((this.contacts[this.userActive].messages.length === 1)));
+            if ((this.contacts[this.userActive].messages.length === 1)) {
+                console.log((this.contacts[this.userActive].messages));
+                this.contacts[this.userActive].messages.pop()
+
+            } else {
+                (this.contacts[this.userActive].messages).splice(userIndex, 1)
+
+            }
+
         },
 
     },

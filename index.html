@@ -81,8 +81,8 @@
                                     <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
-                                    <div class="card-text d-flex justufy-between">
-                                        <div class="d-flex col-8">
+                                    <div class="card-text d-flex justufy-between" v-if="user.message">
+                                        <div class="d-flex col-8" >
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                             <div class="left-user">
                                                 <h5>{{user.name}}</h5>
