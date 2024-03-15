@@ -420,10 +420,6 @@ When your are in :hover on the user profile-pic you can see the img big*/
 #middle-right i {
     position: relative;
     transition: 0.4s;
-
-    i:hover{
-
-    }
 }
 
 
@@ -435,11 +431,12 @@ When your are in :hover on the user profile-pic you can see the img big*/
     padding: 0.5rem 0;
     position: absolute;
     z-index: 1;
-    top: 0px;
-    left: 13px;
+    top: 12px;
+    right: -12px;
     border-radius: 5px;
-    display: none;
-
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 #middle-right ul {
@@ -461,8 +458,8 @@ When your are in :hover on the user profile-pic you can see the img big*/
 #middle-right .fa-chevron-down:hover {
 
     & .hidden-menu {
-
-        display: block;
+        visibility: visible;
+        opacity: 1;
     }
 }
 

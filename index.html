@@ -126,7 +126,7 @@
                             <div class="card-text col-9-sm col-8" v-if="printedContacts.length>0">
                                 <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                 <h5>{{printedContacts[userActive].name}}</h5>
-                                <p>Ultimo accesso oggi alle 16:26</p>
+                                <p>{{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}</p>
                             </div>
                             <div v-else>Nessuna corrispondenza trovata</div>
 
