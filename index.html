@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://kit.fontawesome.com/3a46370e2f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.js' integrity='sha512-Y0hNpPUGIlAoQY6XHJFOCN3OfCPtNtUqiyfOOPbZ8kMrHfyFXv1v6Hn6rMA1G+KmMG/TSLeo0vuULkJZToFu0A==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.js'
+        integrity='sha512-Y0hNpPUGIlAoQY6XHJFOCN3OfCPtNtUqiyfOOPbZ8kMrHfyFXv1v6Hn6rMA1G+KmMG/TSLeo0vuULkJZToFu0A=='
+        crossorigin='anonymous'></script>
 
 </head>
 
@@ -67,10 +69,11 @@
                             <i class="col-3 fa-solid fa-magnifying-glass"></i>
                             <!-- Assegno con v-on il valore in input alla stringa vuota searchedValue in js-->
                             <!--Utilizzo keyup enter per far si che venga monitorata e aggiornata la lista di contatti da stampare con searchUser()-->
-                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue" @keyup="userBar()">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue"
+                                @keyup="userBar()">
                         </div>
 
-                    <!--4th part-->
+                        <!--4th part-->
                         <!--Faccio un ciclo con v-for in modo da vedere non solo il primo utente ma tutti in fila-->
                         <div id="users-card-container" v-for="(user, index) in printedContacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
@@ -220,8 +223,9 @@
         </main>
 
     </div>
-
-    <script src="./assets/js/app.js"></script>
+    
+    <script src="./assets/js/contacts.js" type="module"></script>
+    <script src="./assets/js/app.js"  type="module"></script>
 </body>
 
 </html>
