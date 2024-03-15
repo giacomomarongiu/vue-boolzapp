@@ -66,8 +66,7 @@
                             <i class="col-3 fa-solid fa-magnifying-glass"></i>
                             <!-- Assegno con v-on il valore in input alla stringa vuota searchedValue in js-->
                             <!--Utilizzo keyup enter per far si che venga monitorata e aggiornata la lista di contatti da stampare con searchUser()-->
-                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue"
-                                @keyup.enter="searchUser()">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue">
                         </div>
 
                         <!--4th part-->
@@ -75,23 +74,28 @@
                         <div id="users-card-container" v-for="(user, index) in printedContacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
                             <!-- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente-->
-                            <div class="card-user col-12 d-flex" @click="userActive=index">
+                            <div class="card-user col-12 d-flex" @click="userActive=index"
+                                v-if="printedContacts.length>0">
                                 <div class="col-3 col-md-12">
                                     <!--Inserisco dinamicamente l'avatr con VUE-->
                                     <img alt="" class="img-100" :src="user.avatar">
                                 </div>
                                 <div class="col-9 card-bye">
                                     <div class="card-text d-flex justufy-between">
-                                        <div class="d-flex col-8" >
+                                        <div class="d-flex col-8">
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                             <div class="left-user">
-                                                <h5 >{{user.name}}</h5>
+                                                <h5>{{user.name}}</h5>
                                                 <!--Visualizzo l'ultimo messaggio inserito nell'array dei messaggi-->
-                                                <div v-if="user.messages[(user.messages.length -1)]">{{user.messages[(user.messages.length -1)].message}}</div>
+                                                <!--Lo stampo sole se esiste-->
+                                                <div v-if="user.messages[(user.messages.length -1)]">
+                                                    {{user.messages[(user.messages.length -1)].message}}</div>
                                             </div>
                                         </div>
                                         <!--Utilizzando Vue visualizzola data dell'ultimo messaggio del mio utente del mio utente-->
-                                        <p class="hour col-4" v-if="user.messages[(user.messages.length -1)]">{{user.messages[(user.messages.length -1)].date}}</p>
+                                        <!--Lo stampo sole se esiste-->
+                                        <p class="hour col-4" v-if="user.messages[(user.messages.length -1)]">
+                                            {{user.messages[(user.messages.length -1)].date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -108,18 +112,20 @@
                         <!--up part-->
                         <div id="up-right" class="d-flex">
                             <div class="col-2 text-center">
-                                <a class="lets-show" href="">
-                                    <img alt="" class="img-100" :src="contacts[userActive].avatar">
+                                <a class="lets-show" href="" v-if="printedContacts.length>0">
+                                    <img alt="" class="img-100" :src="printedContacts[userActive].avatar">
                                     <div class="show-big">
-                                        <img class="big-profile" :src="contacts[userActive].avatar" alt="">
+                                        <img class="big-profile" :src="printedContacts[userActive].avatar" alt="">
                                     </div>
                                 </a>
                             </div>
-                            <div class="card-text col-9-sm col-8">
+                            <div class="card-text col-9-sm col-8" v-if="printedContacts.length>0">
                                 <!--Utilizzando Vue visualizzo il nome del mio utente-->
-                                <h5>{{contacts[userActive].name}}</h5>
+                                <h5>{{printedContacts[userActive].name}}</h5>
                                 <p>Ultimo accesso oggi alle 16:26</p>
                             </div>
+                            <div v-else>Nessuna corrispondenza trovata</div>
+
                             <div class="col-2 col-md-2 d-flex card-bye-sm">
                                 <ul class="my-menu d-flex">
                                     <li><i class="fa-solid fa-ellipsis-vertical fa-2x"></i></li>
@@ -131,13 +137,15 @@
 
                         <!--middle part-->
                         <!--Qui applico un v-for per iterare la lista dei messaggi dell'utente-->
-                        <div id="middle-right" class="d-flex">
+                        <div id="middle-right" class="d-flex" v-if="printedContacts.length>0">
                             <!-- La colonna di destra cambia da right a received
                             Quella di sinistra da left a sent-->
                             <!--Utilizzando la funzione sendOrReceiced assegno la classe coretta al messaggio del mio oggetto-->
-                            <div class="square col-7 col-9-sm" v-for="(msg, index) in contacts[userActive].messages"
+
+                            <div class="square col-7 col-9-sm"
+                                v-for="(msg, index) in printedContacts[userActive].messages"
                                 :class="sendOrReceived(msg.status)">
-                                <div v-if="msg.message">{{msg.message}}</div>
+                                <div>{{msg.message}}</div>
                                 <div class="">
                                     <i class="fa-solid fa-chevron-down">
                                         <ul class="hidden-menu">
@@ -148,6 +156,10 @@
                                     </i>
                                 </div>
                             </div>
+                        </div>
+
+                        <div id="middle-right" v-else>
+                            <div class=""> Nessun messaggio da stampare</div>
                         </div>
 
                         <!--bottom part-->

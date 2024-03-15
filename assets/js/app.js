@@ -240,8 +240,10 @@ createApp({
             // Devo "filtrare" il mio array di oggetti quindi uso un filter
             // Utilizzo il mio array vuoto ptintedContacts per filtrare contacts
             // SE non cerco nulla stampo tutti i contatti
-            if (this.searchedValue == "") {
+
+            if (this.searchedValue === "") {
                 this.printedContacts = this.contacts;
+                console.log(this.printedContacts.length>0);
             } else {
                 // Se NO li filtro
                 this.printedContacts = this.contacts.filter((searchString, index) => {
@@ -256,9 +258,9 @@ createApp({
                     // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore minuscolo
                     if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase() === searchString.toLowerCase()) {
                         return true;
-                    } /* else {
-                    return console.log("NON E' TRUE"); Verifica
-                } */
+                    } else {
+                        return console.log("NON E' TRUE"); //Verifica
+                    }
                 })
             }
         },
@@ -273,12 +275,7 @@ createApp({
             console.log(this.contacts[this.userActive].messages);
             console.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
-            console.log(((this.contacts[this.userActive].messages.length === 1)));
-
             (this.contacts[this.userActive].messages).splice(userIndex, 1)
-
-
-
         },
 
     },
