@@ -1,6 +1,7 @@
 console.log("Hello world");
 
-import {contacts} from './contacts.js';
+import { contacts } from './contacts.js';
+import { answers } from './answers.js';
 
 const { DateTime } = luxon;
 
@@ -9,6 +10,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            // Array di risposte random 
+            answers,
             // Variabile di appoggio per la data dei messaggi
             nowDate: "",
             // Creo una variabile con stringa vuota
@@ -36,7 +39,7 @@ createApp({
         }
     },
     methods: {
-        
+
         // Crea l'array dei contatti da stampare nella barra
         userBar() {
             // Verifico la mia stringa 
@@ -114,6 +117,12 @@ createApp({
             this.dateMsg();
             // Assegno la data corretta al mio oggetto
             this.userReply.date = this.nowDate;
+            // Genero una risposta random dal mio array di risposte 
+            let randomIndex = Math.floor(Math.random() * (this.answers.length - 1));
+            //console.log(this.answers[randomIndex]);
+            // Assegno la risposta al mio oggetto
+            this.userReply.message=this.answers[randomIndex];
+            // Lo aggiungo
             (this.contacts[this.userActive].messages).push({ ...this.userReply })
         },
 

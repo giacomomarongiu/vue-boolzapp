@@ -338,9 +338,10 @@ main {
     background-color: #ffff;
 }
 
-.msg-w-100{
+.msg-w-100 {
     width: 90%;
-word-break: break-all;
+    word-break:break-all;
+    line-break: auto;
 }
 
 
