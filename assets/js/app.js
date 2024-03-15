@@ -258,9 +258,9 @@ createApp({
                     // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore minuscolo
                     if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase() === searchString.toLowerCase()) {
                         return true;
-                    } else {
+                    } /* else {
                         return console.log("NON E' TRUE"); //Verifica
-                    }
+                    } */
                 })
             }
         },
