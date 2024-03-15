@@ -430,11 +430,12 @@ When your are in :hover on the user profile-pic you can see the img big*/
 
 #middle-right li {
     padding: 0.5rem 1rem;
+    width: 100%;
 }
 
 #middle-right li:hover {
-    color: #009688;
-    background-color: #EAEAEA;
+    color: #ff2a00;
+    background-color: #ffffff;
 }
 
 

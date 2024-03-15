@@ -1,10 +1,14 @@
 console.log("Hello world");
 
-const { createApp } = Vue
+const { DateTime } = luxon;
+
+const { createApp } = Vue;
 
 createApp({
     data() {
         return {
+            // Variabile di appoggio per la data dei messaggi
+            nowDate: "",
             // Creo una variabile con stringa vuota
             // La collego alla barra "Cerca o inizia una nuova chat" con v-model
             searchedValue: "",
@@ -19,7 +23,7 @@ createApp({
             // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             // La collego alla barra "Scrivi messaggio" con v-model
             newMessage: {
-                date: "now", //cambio dopo
+                date: "", //cambio dopo
                 message: "", //qui il messaggio dell'input
                 status: 'sent', //sarà sempre sent
             },
@@ -214,13 +218,16 @@ createApp({
             console.log(this.contacts[this.userActive].messages);
             // Verifico se newMessage ha il messaggio in lettura corretto
             console.log(this.newMessage);
+            // Assegno a nowDate la data e l'ora di oggi
+            this.dateMsg();
+            // Assegno la data corretta al mio oggetto
+            this.newMessage.date = this.nowDate;
             // Aggiungo la todo all'array con l'operatore spred (push mi crea problemi per via del passaggio tramite reference)
             (this.contacts[this.userActive].messages).push({ ...this.newMessage })
             // Pulisco l'input
             this.newMessage.message = "";
             //Verifico se è stato aggiunto correttamente
             console.log(this.contacts[this.userActive].messages);
-
             setTimeout(() => { this.replyMessage() }, 1000) // Vedi sotto
         },
 
@@ -228,6 +235,10 @@ createApp({
         replyMessage() {
             // Mi evito i log perché sono uguali a quelli di sendMessage
             // Unica differenza: il mio oggetto è statitico (userReply)
+            // Assegno a nowDate la data e l'ora di oggi
+            this.dateMsg();
+            // Assegno la data corretta al mio oggetto
+            this.userReply.date = this.nowDate;
             (this.contacts[this.userActive].messages).push({ ...this.userReply })
         },
 
@@ -243,7 +254,7 @@ createApp({
 
             if (this.searchedValue === "") {
                 this.printedContacts = this.contacts;
-                console.log(this.printedContacts.length>0);
+                console.log(this.printedContacts.length > 0);
             } else {
                 // Se NO li filtro
                 this.printedContacts = this.contacts.filter((searchString, index) => {
@@ -276,6 +287,13 @@ createApp({
             console.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
             (this.contacts[this.userActive].messages).splice(userIndex, 1)
+        },
+
+        // Funzione che assegna la data/ora di oggi alla mia variabile nowDate 
+        dateMsg() {
+            this.nowDate = DateTime.now()
+                .setLocale('it')
+                .toFormat('dd/LL/yyyy hh:mm:ss');
         },
 
     },
