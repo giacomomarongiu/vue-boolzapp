@@ -20,7 +20,7 @@ createApp({
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
 
-            // BONUS MIO - Indice di appoggio che mi serve per portare l'ultimo utente attivo in cima alla userBar
+            // Indice di appoggio
             mySecondIndex: 0,
 
             // Creo una variabile con stringa vuota
@@ -52,31 +52,37 @@ createApp({
     },
     methods: {
 
-        // Crea l'array dei contatti da stampare nella barra
+        /**Crea l'array dei contatti da stampare nella barra in base a quello scritto (o non scritto) nella searchBar.
+         * 
+         * 
+         */
         userBar() {
             // Verifico la mia stringa 
             // console.log(this.searchedValue);
             // Verifico il mio array
             // console.log(this.contacts);
-            // Devo "filtrare" il mio array di oggetti quindi uso un filter
-            // Utilizzo il mio array vuoto ptintedContacts per filtrare contacts
-            // SE non cerco nulla stampo tutti i contatti
 
+            // SE non cerco nulla assegno a ptintedContacts l'intero valore di contacts
             if (this.searchedValue === "") {
                 this.printedContacts = this.contacts;
                 //console.log(this.printedContacts.length > 0);
+
+                // Se NO
             } else {
-                // Se NO li filtro
+                // Devo "filtrare" il mio array di oggetti quindi uso un filter
+                // Utilizzo il mio array vuoto ptintedContacts per filtrare contacts
                 this.printedContacts = this.contacts.filter((searchString, index) => {
                     // Verifico se sto prendendo bene il name
                     // console.log(this.contacts[index].name);
+
                     // Assegno il valore in input al paramentro della funzione
                     searchString = this.searchedValue;
                     // Verifico assegnazione
                     // console.log(searchString);
+
                     // Confronto la mia stringa con i nomi dei miei contacts
                     // Miglioro il confronto: non stampo solo se la stringa è uguale ma anche se c'è riscontro con le posizioni delle lettere
-                    // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore minuscolo
+                    // Utilizzo anche toLowerCase nel caso in cui venga inserito un valore maiuscolo
                     if ((this.contacts[index].name).slice(0, (searchString.length)).toLowerCase() === searchString.toLowerCase()) {
                         return true;
                     } /* else {
@@ -87,9 +93,32 @@ createApp({
             }
         },
 
-        // Assegna la classe received/sent al messaggio
+        /**Questa funzione crea un collegamento costante tra gli utenti che visualizzo e gli utenti in contacts.
+         * Indispendabile perché la funzione lastUserOnTop modifica in continuazione l'ordine dell'array.
+          */
+        findInContacts() {
+            // Io stampo i valori di printedContacts non di contacts
+            // Per capire quale contacts sto modificando su printedContacts faccio un ciclio e cerco l'utente per nome
+            // Salvo il nome dell'utente attivo
+            const myName = this.printedContacts[this.userActive].name;
+            // Verifico
+            //console.log(myName);
+
+            (this.contacts).forEach((element, index) => {
+                //console.log(element.name);
+                if (myName == element.name) {
+                    // Utilizzo il mio indice di appoggio per capire quale contacts sto modificando
+                    return this.mySecondIndex = index;
+                }
+            });
+            //console.log(this.mySecondIndex);
+        },
+
+        /** Assegna la classe CSS (nel DOM) received/sent ai messaggi degli utenti
+         * 
+        */
         sendOrReceived(string) {
-            //faccio un leggo e vedo se prende giusto
+            // Verifico se è collegata bene
             //console.log(string);
             if (string == 'sent') {
                 return 'sent'
@@ -97,97 +126,82 @@ createApp({
             return 'received'
         },
 
-        // Permette di prendere il valore digitato in input e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
+        /** Permette di prendere il valore digitato in input ("Scrivi messaggio...") e pusharlo/aggiungerlo ai messaggi già esistenti dell'utente attivo
+         * 
+         */
         sendMessage() {
-            //Verifico se è ben collegata
+            // Verifico se è ben collegata
             //console.log("QUI IL MESSAGGIO UTENTE");
-            //Verifico cosa ho con This
+
+            // Verifico cosa ho con This
             //console.log(this.contacts);
-            //Conosco quale utente riceverà il messaggio perché ho userActive
+
+            // Conosco quale utente riceverà il messaggio perché ho userActive
             //console.log(this.contacts[this.userActive]);
+
             // Verifico se è l'array giusto
             //console.log(this.contacts[this.userActive].messages);
-            // Verifico se newMessage ha il messaggio in lettura corretto
-            //console.log(this.newMessage);
+
             // Assegno a nowDate la data e l'ora di oggi
             this.dateMsg();
             // Assegno la data corretta al mio oggetto
             this.newMessage.date = this.nowDate;
+            // Verifico se newMessage ha il messaggio corretto
+            console.log(this.newMessage);
 
-            this.mySecondIndex = this.userActive;
-            console.log(this.mySecondIndex)
-            const myName = this.printedContacts[this.mySecondIndex].name;
-            console.log(myName);
-            console.log(this.contacts);
-            (this.contacts).forEach((element, index) => {
-                console.log(element.name);
-                if (myName == element.name) {
-                    return this.mySecondIndex = index;
-                } else return console.log(false)
-            });
+            // Capisco quale utente in contacts sto modicando
+            this.findInContacts(); // Ottengo l'indice
 
-            // Aggiungo la todo all'array con l'operatore spred (push mi crea problemi per via del passaggio tramite reference)
-            console.log(this.mySecondIndex);
+            // Aggiungo la il messaggio all'array contacts con spred
             (this.contacts[this.mySecondIndex].messages).push({ ...this.newMessage })
-            // Pulisco l'input
+            //Verifico se è stato aggiunto correttamente
+            //console.log(this.contacts[this.mySecondIndex].messages);
 
+            // Pulisco l'input
             this.newMessage.message = "";
 
-            console.log("Qui");
+            // BONUS MIO
+            // L'ultimo utente a cui ho scritto diventerà il primo stampato nella userBar
+            this.lastUserOnTop();
 
-            //Verifico se è stato aggiunto correttamente
-            //console.log(this.contacts[this.userActive].messages);
-            setTimeout(() => { this.replyMessage() }, 1000) // Vedi sotto
-            // Se ho mando un messaggio a un utente questo diventa il primo della lista nella userBar
-            //Utilizzo un var locale di appoggio
-            console.log(this.printedContacts);
-            setTimeout(() => {
-                let myLastUser = this.contacts[this.mySecondIndex];
-                console.log(myLastUser);
-                // Cancello l'oggetto appena creato
-                this.contacts.splice(this.mySecondIndex, 1);
-                // Lo ri-inserisco, ma in cima
-                this.contacts.unshift(myLastUser)
+            // Genero una risposta automatica
+            setTimeout(() => { this.replyMessage(); }, 1000) // Vedi sotto
 
-                // Lo ri-inserisco, ma in cima
-                this.userBar()
-
-                // L'oggetto in cima avrà sempre indice 0
-                this.userActive = 0;
-                this.mySecondIndex = 0;
-            }, 1200)
-            console.log(this.printedContacts);
         },
 
-        // Aggiunge un oggetto il cui testo è una stringa random di "answers" all'array dei messaggi nell'utente attivo
+        /** Genera un oggetto grazie all'oggetto globale userReply.
+         *  La risposta testutale verrà generata a caso tra le stringhe presenti nel file aswers
+         * 
+         */
         replyMessage() {
-            console.log(this.printedContacts);
-            console.log("Qui");
-
+            // Capisco quale utente in contacts sto modicando
+            this.findInContacts();
             // Mi evito i log perché sono uguali a quelli di sendMessage
             // Unica differenza: il mio oggetto è statitico (userReply)
-            // Assegno a nowDate la data e l'ora di oggi
-            this.dateMsg();
-            // Assegno la data corretta al mio oggetto
-            this.userReply.date = this.nowDate;
-            console.log("Qui");
 
             // Genero una risposta random dal mio array di risposte 
             let randomIndex = Math.floor(Math.random() * (this.answers.length - 1));
+            // Verifico
             //console.log(this.answers[randomIndex]);
+
             // Assegno la risposta al mio oggetto
             this.userReply.message = this.answers[randomIndex];
-            console.log("Qui");
+            // Assegno a nowReply la data e l'ora di oggi
+            this.dateMsg();
+            // Assegno la data corretta al mio oggetto
+            this.userReply.date = this.nowDate;
+            // Verifico se userReply ha il messaggio corretto
+            console.log(this.userReply);
 
-            // Lo aggiungo
+            // Lo aggiungo con spred
             (this.contacts[this.mySecondIndex].messages).push({ ...this.userReply })
-            console.log("Qui");
-            this.userBar()
-            console.log(this.printedContacts);
         },
 
         // Rimuove il messaggio relativo all'index passato
         removeMessage(userIndex) {
+            this.findInContacts();
+            console.log(this.userActive);
+            console.log(this.contacts[this.userActive].messages);
             //Verifico se si triggera bene
             //console.log("Cancella!");
             //Verifico l'index passato
@@ -196,7 +210,8 @@ createApp({
             //console.log(this.contacts[this.userActive].messages);
             //console.log(this.contacts[this.userActive].messages[userIndex]);
             //Cancello il testo selezionato grazie all'indice che ho ricevuto
-            (this.contacts[this.userActive].messages).splice(userIndex, 1)
+            (this.contacts[this.mySecondIndex].messages).splice(userIndex, 1)
+            this.userBar()
         },
 
         // Assegna la data/ora di oggi alla mia variabile nowDate 
@@ -204,6 +219,22 @@ createApp({
             this.nowDate = DateTime.now()
                 .setLocale('it')
                 .toFormat('dd/LL/yyyy hh:mm:ss');
+        },
+
+        // Porta l'ultimo utente a cui mando un messaggio in cima alla lista della userBar
+        lastUserOnTop() {
+            let myLastUser = this.contacts[this.mySecondIndex];
+            console.log(myLastUser);
+            // Cancello l'oggetto appena creato
+            this.contacts.splice(this.mySecondIndex, 1);
+            // Lo ri-inserisco, ma in cima
+            this.contacts.unshift(myLastUser)
+
+            // Lo ri-inserisco, ma in cima
+            this.userBar()
+
+            // L'oggetto in cima avrà sempre indice 0
+            this.userActive = 0;
         },
 
     },
