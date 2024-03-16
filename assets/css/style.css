@@ -140,10 +140,12 @@ body {
 .card-text p {
     padding-top: 0.2rem;
     color: #8b8d83;
+    font-weight: bold;
 }
 
 .hour {
-    padding-right: 10px;
+    padding-left: 10px;
+    font-size: smaller;
 }
 
 
@@ -428,7 +430,7 @@ When your are in :hover on the user profile-pic you can see the img big*/
 /*Hidden Menu - ChevronDown*/
 #middle-right i {
     position: relative;
-    transition: 0.4s;
+
 }
 
 

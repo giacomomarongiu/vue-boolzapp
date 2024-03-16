@@ -57,6 +57,8 @@ createApp({
          * 
          */
         userBar() {
+            // Vedrò sempre il primo utente della userBar
+            this.userActive = 0;
             // Verifico la mia stringa 
             // console.log(this.searchedValue);
             // Verifico il mio array
@@ -115,12 +117,12 @@ createApp({
         },
 
         /** Assegna la classe CSS (nel DOM) received/sent ai messaggi degli utenti
-         * 
+         * @param {string} msgStatus
         */
-        sendOrReceived(string) {
+        sendOrReceived(msgStatus) {
             // Verifico se è collegata bene
             //console.log(string);
-            if (string == 'sent') {
+            if (msgStatus == 'sent') {
                 return 'sent'
             }
             return 'received'
@@ -197,42 +199,45 @@ createApp({
             (this.contacts[this.mySecondIndex].messages).push({ ...this.userReply })
         },
 
-        // Rimuove il messaggio relativo all'index passato
-        removeMessage(userIndex) {
+        /** Riceve in entrata un intero che coincide con l'indice dell'array relativo al messaggio cliccato.
+         * Cancella quel messaggio dall'array.
+         * @param {number} msgIndex 
+         */
+        removeMessage(msgIndex) {
+            // Capisco quale utente in contacts sto modicando
             this.findInContacts();
-            console.log(this.userActive);
-            console.log(this.contacts[this.userActive].messages);
-            //Verifico se si triggera bene
+            // console.log(this.userActive);
+            // console.log(this.contacts[this.userActive].messages);
+            // Verifico se si triggera bene
             //console.log("Cancella!");
-            //Verifico l'index passato
+            // Verifico l'index passato
             //console.log(userIndex);
-            //Verifico se è corretto l'elemento
+            // Verifico se è corretto l'elemento
             //console.log(this.contacts[this.userActive].messages);
             //console.log(this.contacts[this.userActive].messages[userIndex]);
-            //Cancello il testo selezionato grazie all'indice che ho ricevuto
-            (this.contacts[this.mySecondIndex].messages).splice(userIndex, 1)
-            this.userBar()
+            // Cancello il testo selezionato grazie all'indice che ho ricevuto
+            (this.contacts[this.mySecondIndex].messages).splice(msgIndex, 1)
         },
 
-        // Assegna la data/ora di oggi alla mia variabile nowDate 
+        /** Assegna la data/ora di oggi alla mia variabile nowDate 
+         *  */
         dateMsg() {
             this.nowDate = DateTime.now()
-                .setLocale('it')
-                .toFormat('dd/LL/yyyy hh:mm:ss');
+                .toFormat('LL/yyyy hh:mm:ss');
         },
 
-        // Porta l'ultimo utente a cui mando un messaggio in cima alla lista della userBar
+        /** Porta l'ultimo utente a cui mando un messaggio in cima alla lista della userBar
+         * 
+         */
         lastUserOnTop() {
             let myLastUser = this.contacts[this.mySecondIndex];
-            console.log(myLastUser);
+            //console.log(myLastUser);
             // Cancello l'oggetto appena creato
             this.contacts.splice(this.mySecondIndex, 1);
             // Lo ri-inserisco, ma in cima
             this.contacts.unshift(myLastUser)
-
-            // Lo ri-inserisco, ma in cima
+            // Aggiorno la mia userBar
             this.userBar()
-
             // L'oggetto in cima avrà sempre indice 0
             this.userActive = 0;
         },

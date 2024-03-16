@@ -21,8 +21,7 @@
         <main>
             <!--main-->
             <div id="site-main">
-                <!--My container for all the chat
-                    change dimension on breakpoint-->
+                <!--My container for all the chat change dimension on breakpoint-->
 
                 <div class="chat-container d-flex">
                     <!--chat divided left/right-->
@@ -52,6 +51,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--/1st part-->
 
                         <!--2nd part-->
                         <div id="my-not" class="card-user col-12 d-flex card-bye">
@@ -63,6 +63,7 @@
                                 <p>Attiva notifiche desktop</p>
                             </div>
                         </div>
+                        <!--/2nd part-->
 
                         <!--3rd part-->
                         <div id="search-bar" class="col-12 d-flex card-bye" @keyup="userBar()">
@@ -72,13 +73,15 @@
                             <input type="text" placeholder="Cerca o inizia una nuova chat.." v-model="searchedValue"
                                 @keyup="userBar()">
                         </div>
+                        <!--/3rd part-->
 
+                        
                         <!--4th part-->
                         <!--Faccio un ciclo con v-for in modo da vedere non solo il primo utente ma tutti in fila-->
                         <div id="users-card-container" v-for="(user, index) in printedContacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
                             <!-- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente-->
-                            <div class="card-user col-12 d-flex"   @click="userActive=index;console.log(this.userActive)"
+                            <div class="card-user col-12 d-flex" @click="userActive=index;console.log(this.userActive)"
                                 v-if="printedContacts.length>0">
                                 <div class="col-3 col-md-12">
                                     <!--Inserisco dinamicamente l'avatr con VUE-->
@@ -105,6 +108,8 @@
                             </div>
 
                         </div>
+                        <!--/4th part-->
+
                     </div>
                     <!--/left-side of the chat-->
 
@@ -126,8 +131,8 @@
                             <div class="card-text col-9-sm col-8" v-if="printedContacts.length>0">
                                 <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                 <h5>{{printedContacts[userActive].name}}</h5>
-                                <p v-if="printedContacts[userActive].messages.length-1>0">
-                                    {{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}
+                                <p v-if="printedContacts[userActive].messages.length>0">
+                                    Ultimo messaggio:{{printedContacts[userActive].messages[printedContacts[userActive].messages.length-1].date}}
                                 </p>
                             </div>
                             <div v-else class="text-empty">Nessuna corrispondenza trovata</div>
@@ -140,6 +145,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <!--/up part-->
 
                         <!--middle part-->
                         <!--Qui applico un v-for per iterare la lista dei messaggi dell'utente-->
@@ -147,7 +153,6 @@
                             <!-- La colonna di destra cambia da right a received
                             Quella di sinistra da left a sent-->
                             <!--Utilizzando la funzione sendOrReceiced assegno la classe coretta al messaggio del mio oggetto-->
-
                             <div class="square col-7 col-9-sm"
                                 v-for="(msg, index) in printedContacts[userActive].messages"
                                 :class="sendOrReceived(msg.status)">
@@ -163,10 +168,11 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!--Se non c'è nulla da stampare-->
                         <div id="middle-right" v-else>
                             <div class=""> Nessun messaggio da stampare</div>
                         </div>
+                        <!--/middle part-->
 
                         <!--bottom part-->
                         <div id="bottom-right" class="d-flex">
@@ -192,6 +198,7 @@
                                 @keyup.enter="sendMessage()">
                             <div class="emoji card-bye-sm"><i class="fa-solid fa-microphone fa-2x"></i></div>
                         </div>
+                        <!--/bottom part-->
                     </div>
                     <!--/right-side of the chat-->
 
