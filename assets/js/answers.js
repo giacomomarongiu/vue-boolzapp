@@ -14,6 +14,25 @@ const answers = [
     "Sei solo chiacchiere e distintivo!",
     "Mamma diceva sempre: la vita è come a una scatola di cioccolatini",
     "Ora, se vuoi scusarmi, vado a casa a farmi venire un infarto",
+    "Sono il re del mondo!",
+    "Non ti salverai! Io riuscirò a prendervi, te e il tuo odioso cagnolino!",
+    "Adesso basta, svegliati!",
+    "Carpe diem, cogliete l'attimo ragazzi, rendete straordinaria la vostra vita.",
+    "La vita è un banchetto e solo gli idioti muoiono di fame!",
+    "Il mio tesssoro!",
+    "Oh, Adriana!",
+    "Lascia stare, Jake, è Chinatown.",
+    "Sono il lupo cattivo!",
+    "Elementare, Watson!",
+    "Salutatemi il mio amico Sosa!",
+    "Houston, abbiamo un problema.",
+    "Nessun posto è bello come casa mia.",
+    "Ci sono, Ma'. Sulla vetta del mondo!",
+    "E.T. telefono casa.",
+    "Ma dici a me?",
+    "Coraggio... fatti ammazzare.",
+    "Toto, ho l'impressione che non siamo più nel Kansas.",
+
 ]
 
-export  {answers};
+export { answers };
