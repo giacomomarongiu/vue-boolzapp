@@ -9,7 +9,6 @@ const answers = [
     "Per me due cose contano a questo mondo: le palle e la mia parola",
     "Metti la cera, togli la cera",
     "Strade? Dove stiamo andando non c’è bisogno di strade!",
-    "Se io posso cambiare, e se voi potete cambiare, allora, tutto il mondo può cambiare!",
     "Nessuno può mettere Baby in un angolo",
     "Sei solo chiacchiere e distintivo!",
     "Mamma diceva sempre: la vita è come a una scatola di cioccolatini",

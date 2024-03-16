@@ -92,10 +92,10 @@
                                         <div class="d-flex col-8">
                                             <!--Utilizzando Vue visualizzo il nome del mio utente-->
                                             <div class="left-user">
-                                                <h5>{{user.name}}</h5>
+                                                <h5 class="card-name">{{user.name}}</h5>
                                                 <!--Visualizzo l'ultimo messaggio inserito nell'array dei messaggi-->
                                                 <!--Lo stampo sole se esiste-->
-                                                <div v-if="user.messages[(user.messages.length -1)]">
+                                                <div class="card-msg" v-if="user.messages[(user.messages.length -1)]">
                                                     {{user.messages[(user.messages.length -1)].message}}</div>
                                             </div>
                                         </div>
