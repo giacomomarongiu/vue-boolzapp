@@ -78,7 +78,7 @@
                         <div id="users-card-container" v-for="(user, index) in printedContacts">
                             <!-- Questa è la card su cui lavorerò con VUE-->
                             <!-- Al @click su un utente assegno ad activeUser il valore dell'indice di quell'utente-->
-                            <div class="card-user col-12 d-flex" @click="userActive=index"
+                            <div class="card-user col-12 d-flex"   @click="userActive=index;console.log(this.userActive)"
                                 v-if="printedContacts.length>0">
                                 <div class="col-3 col-md-12">
                                     <!--Inserisco dinamicamente l'avatr con VUE-->

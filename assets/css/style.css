@@ -348,7 +348,7 @@ main {
 
 .msg-w-100 {
     width: 90%;
-    word-break: break-all;
+    word-break:normal ;
     line-break: auto;
 }
 
