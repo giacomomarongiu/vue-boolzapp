@@ -10,21 +10,34 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            // Array di risposte random (importato)
-            answers,
+
+            // Array di oggetti che contengono due stringhe (nome e percorso immagine), un booleano e un array di oggetti (importato)
+            contacts,
+
             // Variabile di appoggio per la data dei messaggi
             nowDate: "",
-            // Creo una variabile con stringa vuota
-            // La collego alla barra "Cerca o inizia una nuova chat" con v-model
-            searchedValue: "",
+
             // Variabile numerica che mi servirà come indice di appoggio
             userActive: 0,
+
+            // BONUS MIO - Indice di appoggio che mi serve per portare l'ultimo utente attivo in cima alla userBar
+            mySecondIndex: 0,
+
+            // Creo una variabile con stringa vuota
+            // La collego alla barra "Cerca o inizia una nuova chat" con v-model
+            // Mi servirà per generare la lista di utenti stampati nella userBar
+            searchedValue: "",
+
+            // BONUS MIO - Array di risposte random (importato)
+            answers,
+
             // Per le risposte automatiche creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             userReply: {
                 date: "now", //cambio dopo
                 message: "Ok", //cambio dopo
                 status: 'received', //sarà sempre received
             },
+
             // Creo una struttura dati di appoggio che sia la stessa dei messaggi già esistenti
             // La collego alla barra "Scrivi messaggio" con v-model
             newMessage: {
@@ -32,8 +45,7 @@ createApp({
                 message: "", //qui il messaggio dell'input
                 status: 'sent', //sarà sempre sent
             },
-            // array di oggetti che contengono due stringhe (nome e percorso immagine), un booleano e un array di oggetti (importato)
-            contacts,
+
             // Lista dei contatti da stampare della barra di sinistra 
             printedContacts: [],
         }
@@ -102,20 +114,21 @@ createApp({
             // Assegno la data corretta al mio oggetto
             this.newMessage.date = this.nowDate;
 
-
-            const myName = this.printedContacts[this.userActive].name;
+            this.mySecondIndex = this.userActive;
+            console.log(this.mySecondIndex)
+            const myName = this.printedContacts[this.mySecondIndex].name;
             console.log(myName);
             console.log(this.contacts);
             (this.contacts).forEach((element, index) => {
                 console.log(element.name);
                 if (myName == element.name) {
-                    return this.userActive = index;
+                    return this.mySecondIndex = index;
                 } else return console.log(false)
             });
 
             // Aggiungo la todo all'array con l'operatore spred (push mi crea problemi per via del passaggio tramite reference)
-            console.log(this.userActive);
-            (this.contacts[this.userActive].messages).push({ ...this.newMessage })
+            console.log(this.mySecondIndex);
+            (this.contacts[this.mySecondIndex].messages).push({ ...this.newMessage })
             // Pulisco l'input
 
             this.newMessage.message = "";
@@ -124,37 +137,31 @@ createApp({
 
             //Verifico se è stato aggiunto correttamente
             //console.log(this.contacts[this.userActive].messages);
-            this.userBar()
-            setTimeout(() => { this.userBar(); this.replyMessage() }, 1000) // Vedi sotto
+            setTimeout(() => { this.replyMessage() }, 1000) // Vedi sotto
             // Se ho mando un messaggio a un utente questo diventa il primo della lista nella userBar
             //Utilizzo un var locale di appoggio
+            console.log(this.printedContacts);
             setTimeout(() => {
-                let myLastUser = this.contacts[this.userActive];
+                let myLastUser = this.contacts[this.mySecondIndex];
+                console.log(myLastUser);
                 // Cancello l'oggetto appena creato
-                this.contacts.splice(this.userActive, 1);
-                console.log("Qui");
+                this.contacts.splice(this.mySecondIndex, 1);
                 // Lo ri-inserisco, ma in cima
                 this.contacts.unshift(myLastUser)
-                console.log("Qui");
-                // L'oggetto in cima avrà sempre indice 0
-                this.userActive = 0;
-                console.log("Qui");
-                
-                this.printedContacts.splice(this.userActive, 1);
-                console.log("Qui");
+
                 // Lo ri-inserisco, ma in cima
-                this.printedContacts.unshift(myLastUser)
-                console.log("Qui");
-                // L'oggetto in cima avrà sempre indice 0
-                this.userActive = 0;
-                console.log("Qui");
                 this.userBar()
 
-            }, 1000)
+                // L'oggetto in cima avrà sempre indice 0
+                this.userActive = 0;
+                this.mySecondIndex = 0;
+            }, 1200)
+            console.log(this.printedContacts);
         },
 
         // Aggiunge un oggetto il cui testo è una stringa random di "answers" all'array dei messaggi nell'utente attivo
         replyMessage() {
+            console.log(this.printedContacts);
             console.log("Qui");
 
             // Mi evito i log perché sono uguali a quelli di sendMessage
@@ -173,9 +180,10 @@ createApp({
             console.log("Qui");
 
             // Lo aggiungo
-            (this.contacts[this.userActive].messages).push({ ...this.userReply })
+            (this.contacts[this.mySecondIndex].messages).push({ ...this.userReply })
             console.log("Qui");
-
+            this.userBar()
+            console.log(this.printedContacts);
         },
 
         // Rimuove il messaggio relativo all'index passato
@@ -201,7 +209,7 @@ createApp({
     },
     // Chiamo la funzione searchUser qui
     // All'inizio la searchBar sarà vuota quindi devo stampare tutti i contatti
-    created() {
+    mounted() {
         this.userBar()
     }
 }).mount('#app')
